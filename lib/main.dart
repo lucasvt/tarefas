@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'adcionar_tarefas.dart';
+
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
 final ButtonStyle flatButtonStyle = TextButton.styleFrom(
-  primary: Colors.black87,
   minimumSize: Size(88, 36),
   padding: EdgeInsets.symmetric(horizontal: 16.0),
   shape: const RoundedRectangleBorder(
@@ -11,9 +12,7 @@ final ButtonStyle flatButtonStyle = TextButton.styleFrom(
   ),
 );
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MaterialApp(home: MyApp()));
 
 class MyApp extends StatelessWidget {
   @override
@@ -22,6 +21,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: darkBlue),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(
+          title: Text("Tarefas"),
+          backgroundColor: Colors.blue,
+          
+          
+        ),
         body: Column(
           children: <Widget>[
             Expanded(
@@ -32,22 +37,33 @@ class MyApp extends StatelessWidget {
                     height: 50,
                     color: Color.fromARGB(255, 16, 60, 96),
                   ),
-                  Container(height: 50, color: Colors.blue),
+                  Icon(
+                    IconData(0xf117, fontFamily: 'MaterialIcons'),
+                  ),
                   Container(
                       height: 652,
                       color: Color.fromARGB(255, 12, 44, 70),
-                      child: Center(child: Text("lista de tarefas")))
+                      child: Center(child: Text("Lista de tarefas")))
                 ],
               )),
             ),
             TextButton(
-              style: flatButtonStyle,
-              onPressed: () {},
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AdicionarTarefas()),
+                );
+              },
               child: Text('Adicionar Nova tarefa'),
             ),
             Container(
               height: 50,
+              width: 400,
               color: Colors.blue,
+              child: Text('Pesquisar Tarefa'),
             )
           ],
         ),

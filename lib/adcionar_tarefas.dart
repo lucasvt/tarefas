@@ -39,6 +39,8 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   @override
   Widget build(BuildContext context) {
+    String dropdownValue = list.first;
+    String dropdownEstado = listEstado.first;
     // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
@@ -68,22 +70,50 @@ class MyCustomFormState extends State<MyCustomForm> {
               icon: const Icon(Icons.punch_clock,
                   color: Color.fromARGB(255, 26, 95, 233)),
             ),
-          ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'Informe o Estado da tarefa',
-              labelText: 'Estado da Tarefa',
-              icon: const Icon(Icons.list,
-                  color: Color.fromARGB(255, 26, 95, 233)),
+          ),          
+          DropdownButton<String>(
+            value: dropdownEstado,
+            icon: const Icon(Icons.arrow_downward, color: Colors.blue),
+            elevation: 16,
+            style: const TextStyle(color: Colors.blue),
+            underline: Container(
+              height: 2,
+              color: Colors.blue,
             ),
+            onChanged: (String? value) {
+              // This is called when the user selects an item.
+              setState(() {
+                dropdownEstado = value!;
+              });
+            },
+            items: listEstado.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
           ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'Adcionar a uma lista',
-              labelText: 'Lista',
-              icon: const Icon(Icons.list,
-                  color: Color.fromARGB(255, 26, 95, 233)),
+          DropdownButton<String>(
+            value: dropdownValue,
+            icon: const Icon(Icons.arrow_downward, color: Colors.blue),
+            elevation: 16,
+            style: const TextStyle(color: Colors.blue),
+            underline: Container(
+              height: 2,
+              color: Colors.blue,
             ),
+            onChanged: (String? value) {
+              // This is called when the user selects an item.
+              setState(() {
+                dropdownValue = value!;
+              });
+            },
+            items: list.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),

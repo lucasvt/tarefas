@@ -13,9 +13,17 @@ final ButtonStyle flatButtonStyle = TextButton.styleFrom(
 );
 
 void main() => runApp(MaterialApp(home: MyApp()));
+const List<String> list = <String>['Pessoal', 'Trabalho', 'Estudo', 'Lazer'];
+const List<String> listEstado = <String>[
+  'Aberto',
+  'Concluido',
+  'excluido',
+  'aguardando Liberação'
+];
 
 class MyApp extends StatelessWidget {
   List _listaTarefas = ["Ir ao mercado", "estudar", "Pedalar"];
+  
 
   @override
   Widget build(BuildContext context) {

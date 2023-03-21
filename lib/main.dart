@@ -15,6 +15,8 @@ final ButtonStyle flatButtonStyle = TextButton.styleFrom(
 void main() => runApp(MaterialApp(home: MyApp()));
 
 class MyApp extends StatelessWidget {
+  List _listaTarefas = ["Ir ao mercado", "estudar", "Pedalar"];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,11 +26,36 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Tarefas"),
           backgroundColor: Colors.blue,
-          
-          
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(IconData(0xe3c7, fontFamily: 'MaterialIcons')),
+              onPressed: () {
+                // do something
+              },
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                // do something
+              },
+            ),
+          ],
         ),
         body: Column(
           children: <Widget>[
+            Expanded(
+              child: ListView.builder(
+                itemCount: _listaTarefas.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(_listaTarefas[index]),
+                  );
+                },
+              ),
+            ),
             Expanded(
               child: SingleChildScrollView(
                   child: Column(
@@ -36,9 +63,6 @@ class MyApp extends StatelessWidget {
                   Container(
                     height: 50,
                     color: Color.fromARGB(255, 16, 60, 96),
-                  ),
-                  Icon(
-                    IconData(0xf117, fontFamily: 'MaterialIcons'),
                   ),
                   Container(
                       height: 652,

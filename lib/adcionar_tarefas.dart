@@ -62,15 +62,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               icon: const Icon(Icons.calendar_today,
                   color: Color.fromARGB(255, 26, 95, 233)),
             ),
-          ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'Informe o horário da tarefa',
-              labelText: 'Informe o Horário',
-              icon: const Icon(Icons.punch_clock,
-                  color: Color.fromARGB(255, 26, 95, 233)),
-            ),
-          ),          
+          ),                  
           DropdownButton<String>(
             value: dropdownEstado,
             icon: const Icon(Icons.arrow_downward, color: Colors.blue),

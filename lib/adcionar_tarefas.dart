@@ -14,9 +14,31 @@ class AdicionarTarefas extends StatelessWidget {
       title: appTitle,
       home: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text(appTitle),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyApp()),
+              );
+            },
+            icon: Icon(Icons.home),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp()),
+                );
+              },
+              icon: Icon(Icons.close),
+            ),
+          ],
         ),
         body: const MyCustomForm(),
+        backgroundColor: Color.fromARGB(255, 12, 44, 70),
       ),
     );
   }
@@ -47,73 +69,101 @@ class MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'Informe o nome da tarefa',
-              labelText: 'Nome da Tarefa',
-              icon: const Icon(Icons.paste_outlined,
-                  color: Color.fromARGB(255, 26, 95, 233)),
+          Container(
+            height: 100,
+            margin: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(3.0),
+            child: TextFormField(
+              decoration: const InputDecoration(
+                hintText: 'Informe o nome da tarefa',
+                icon: Icon(Icons.calendar_today,
+                    color: Color.fromARGB(255, 255, 255, 255)),
+                labelText: 'Nome da Tarefa',
+                suffixIcon:
+                    Icon(Icons.mic, color: Color.fromARGB(255, 255, 255, 255)),
+              ),
             ),
           ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'Informe a data da Data',
-              labelText: 'Selecione a Data',
-              icon: const Icon(Icons.calendar_today,
-                  color: Color.fromARGB(255, 26, 95, 233)),
+          Container(
+            margin: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(3.0),
+            child: TextFormField(
+              decoration: const InputDecoration(
+                hintText: 'Informe a data da Data',
+                labelText: 'Selecione a Data',
+                icon: const Icon(Icons.calendar_today,
+                    color: Color.fromARGB(255, 255, 255, 255)),
+                suffixIcon: const Icon(Icons.close,
+                    color: Color.fromARGB(255, 255, 255, 255)),
+              ),
             ),
           ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: 'Informe o horário da tarefa',
-              labelText: 'Informe o Horário',
-              icon: const Icon(Icons.punch_clock,
-                  color: Color.fromARGB(255, 26, 95, 233)),
+          Container(
+            margin: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(3.0),
+            child: TextFormField(
+              style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+              decoration: const InputDecoration(
+                hintText: 'Informe o horário da tarefa',
+                labelText: 'Informe o Horário',
+                suffixIcon: const Icon(Icons.close,
+                    color: Color.fromARGB(255, 255, 255, 255)),
+                icon: const Icon(Icons.punch_clock,
+                    color: Color.fromARGB(255, 255, 255, 255)),
+              ),
             ),
           ),
-          DropdownButton<String>(
-            value: dropdownEstado,
-            icon: const Icon(Icons.arrow_downward, color: Colors.blue),
-            elevation: 16,
-            style: const TextStyle(color: Colors.blue),
-            underline: Container(
-              height: 2,
-              color: Colors.blue,
+          Container(
+            margin: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(3.0),
+            child: DropdownButton<String>(
+              value: dropdownEstado,
+              icon: const Icon(Icons.arrow_downward, color: Colors.white),
+              elevation: 16,
+              style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+              underline: Container(
+                height: 2,
+                color: Color.fromARGB(255, 255, 255, 255),
+              ),
+              onChanged: (String? value) {
+                // This is called when the user selects an item.
+                setState(() {
+                  dropdownEstado = value!;
+                });
+              },
+              items: listEstado.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
             ),
-            onChanged: (String? value) {
-              // This is called when the user selects an item.
-              setState(() {
-                dropdownEstado = value!;
-              });
-            },
-            items: listEstado.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
           ),
-          DropdownButton<String>(
-            value: dropdownValue,
-            icon: const Icon(Icons.arrow_downward, color: Colors.blue),
-            elevation: 16,
-            style: const TextStyle(color: Colors.blue),
-            underline: Container(
-              height: 2,
-              color: Colors.blue,
+          Container(
+            margin: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(3.0),
+            child: DropdownButton<String>(
+              value: dropdownValue,
+              icon: const Icon(Icons.arrow_downward, color: Colors.white),
+              elevation: 16,
+              style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+              underline: Container(
+                height: 2,
+                color: Color.fromARGB(255, 255, 255, 255),
+              ),
+              onChanged: (String? value) {
+                // This is called when the user selects an item.
+                setState(() {
+                  dropdownValue = value!;
+                });
+              },
+              items: list.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
             ),
-            onChanged: (String? value) {
-              // This is called when the user selects an item.
-              setState(() {
-                dropdownValue = value!;
-              });
-            },
-            items: list.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),

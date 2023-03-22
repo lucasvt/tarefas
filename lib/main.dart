@@ -23,7 +23,6 @@ const List<String> listEstado = <String>[
 
 class MyApp extends StatelessWidget {
   List _listaTarefas = ["Ir ao mercado", "estudar", "Pedalar"];
-  
 
   @override
   Widget build(BuildContext context) {
@@ -32,71 +31,65 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Tarefas"),
+          centerTitle: true,
           backgroundColor: Colors.blue,
-          actions: <Widget>[
+          title: Text("Tarefas"),
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.home),
+          ),
+          actions: [
             IconButton(
+              onPressed: () {},
               icon: Icon(IconData(0xe3c7, fontFamily: 'MaterialIcons')),
-              onPressed: () {
-                // do something
-              },
             ),
             IconButton(
+              onPressed: () {},
               icon: Icon(
                 Icons.settings,
                 color: Colors.white,
               ),
-              onPressed: () {
-                // do something
-              },
             ),
           ],
         ),
         body: Column(
           children: <Widget>[
             Expanded(
-              child: ListView.builder(
-                itemCount: _listaTarefas.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(_listaTarefas[index]),
-                  );
-                },
-              ),
-            ),
-            Expanded(
               child: SingleChildScrollView(
                   child: Column(
                 children: <Widget>[
                   Container(
-                    height: 50,
-                    color: Color.fromARGB(255, 16, 60, 96),
-                  ),
-                  Container(
-                      height: 652,
+                      height: 600,
                       color: Color.fromARGB(255, 12, 44, 70),
                       child: Center(child: Text("Lista de tarefas")))
                 ],
               )),
             ),
-            TextButton(
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+            Container(
+              child: TextButton(
+                style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AdicionarTarefas()),
+                  );
+                },
+                child: Text('Adicionar Nova tarefa'),
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AdicionarTarefas()),
-                );
-              },
-              child: Text('Adicionar Nova tarefa'),
             ),
             Container(
-              height: 50,
-              width: 400,
-              color: Colors.blue,
-              child: Text('Pesquisar Tarefa'),
-            )
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Informe o nome da tarefa',
+                  icon: Icon(Icons.mic,
+                      color: Color.fromARGB(255, 253, 253, 253)),
+                  labelText: 'Nome da Tarefa',
+                ),
+              ),
+            ),
           ],
         ),
       ),

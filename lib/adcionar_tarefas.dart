@@ -76,8 +76,8 @@ class MyCustomFormState extends State<MyCustomForm> {
             child: TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Informe o nome da tarefa',
-                icon: Icon(Icons.calendar_today,
-                    color: Color.fromARGB(255, 255, 255, 255)),
+                icon:
+                    Icon(Icons.work, color: Color.fromARGB(255, 255, 255, 255)),
                 labelText: 'Nome da Tarefa',
                 suffixIcon:
                     Icon(Icons.mic, color: Color.fromARGB(255, 255, 255, 255)),
@@ -89,8 +89,8 @@ class MyCustomFormState extends State<MyCustomForm> {
             padding: const EdgeInsets.all(3.0),
             child: TextFormField(
               decoration: const InputDecoration(
-                hintText: 'Informe a data da Data',
-                labelText: 'Selecione a Data',
+                hintText: 'Informe a data!',
+                labelText: 'Data de Inicio da tarefa',
                 icon: const Icon(Icons.calendar_today,
                     color: Color.fromARGB(255, 255, 255, 255)),
                 suffixIcon: const Icon(Icons.close,
@@ -104,11 +104,26 @@ class MyCustomFormState extends State<MyCustomForm> {
             child: TextFormField(
               style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
               decoration: const InputDecoration(
-                hintText: 'Informe o horário da tarefa',
-                labelText: 'Informe o Horário',
+                hintText: 'Informe data prevista para conclusão',
+                labelText: 'Informe a data prevista de Conclusão!',
+                icon: const Icon(Icons.calendar_today,
+                    color: Color.fromARGB(255, 255, 255, 255)),
                 suffixIcon: const Icon(Icons.close,
                     color: Color.fromARGB(255, 255, 255, 255)),
-                icon: const Icon(Icons.punch_clock,
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(3.0),
+            child: TextFormField(
+              style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+              decoration: const InputDecoration(
+                hintText: 'Informe data de conclusão',
+                labelText: 'Informe a data de Conclusão!',
+                icon: const Icon(Icons.calendar_today,
+                    color: Color.fromARGB(255, 255, 255, 255)),
+                suffixIcon: const Icon(Icons.close,
                     color: Color.fromARGB(255, 255, 255, 255)),
               ),
             ),
